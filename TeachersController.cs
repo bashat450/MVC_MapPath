@@ -72,8 +72,10 @@ namespace CrudMap.Controllers
                 if (imageFile != null && imageFile.ContentLength > 0)
                 {
                     string fileName = Path.GetFileName(imageFile.FileName);
+                    // 1. Save to physical folder
                     string imagePath = Path.Combine(Server.MapPath("~/Images/"), fileName);
                     imageFile.SaveAs(imagePath);
+                    // 2. Save virtual path to database
                     editModel.ImagePath = "~/Images/" + fileName;
                 }
                 else
